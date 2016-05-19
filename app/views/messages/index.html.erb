@@ -16,18 +16,31 @@
         新規メッセージ
     </div>
     <%= form_for(@message) do |f| %>
-    <div class="panel-body">
-        <div class="form-group">
-            <label class="control-label">氏名：</label>
-            <%= f.text_field :name, :class => "form-control",:placeholder => "お名前を入力してください" %>
+        <% if @message.errors.present? %>
+            <div class="alert alert-danger">
+                <%= alert %>
+                <ul>
+                    <% @message.errors.full_messages.each do |full_message| %>
+                        <li>
+                            <%= full_message %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="control-label">氏名：</label>
+                <%= f.text_field :name, :class => "form-control",:placeholder => "お名前を入力してください" %>
+            </div>
+            <div class="form-group">
+                <label class="control-label">内容：</label>
+                <%= f.text_area :body, :class => "form-control",:placeholder => "メッセージをお願いします" %>
+            </div>
+            <div class="form-group">
+                <%= f.submit class: "btn btn-primary btn-lg btn-block", :value => "送信"%>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label">内容：</label>
-            <%= f.text_area :body, :class => "form-control",:placeholder => "メッセージをお願いします" %>
-        </div>
-        <div class="form-group">
-            <%= f.submit class: "btn btn-primary btn-lg btn-block", :value => "送信"%>
-        </div>
-    </div>
+    <% end %>
 </div>
-<% end %>
