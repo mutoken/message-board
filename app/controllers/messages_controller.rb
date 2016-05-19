@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     ##Messagesを全て取得する
     @messages = Message.all
   end
-  
+   
   def create
     @message = Message.new(message_params)
     if @message.save
