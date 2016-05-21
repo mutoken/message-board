@@ -5,9 +5,10 @@
     <div class="panel-body">
         <% @messages.each do |message| %>
             <span class="label label-info"><%= message.name %></span>
-            <%= message.body %>
-            <%= link_to "edit" , edit_message_path(message) %>
-            <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+            年齢：<%= message.age %>
+            コメント：<%= message.body %>
+            <span class="label label-pill label-info"><%= link_to "edit" , edit_message_path(message) %></span>
+            <span class="label label-pill label-info"><%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %></span>
         <br>
         <% end %>
     </div>
